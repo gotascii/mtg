@@ -1,0 +1,7 @@
+<% cards.each do |card| %>
+  <tr>
+    <%= card_columns(card) %>
+    <td><%= card.total %></td>
+    <td><%= link_to 'Delete', card_url(card, :color_id => @color.try(:id)), :method => :delete %></td>
+  </tr>
+<% end %>

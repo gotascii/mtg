@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#   
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Major.create(:name => 'Daley', :city => cities.first)
+["Red",
+"Green",
+"White",
+"Blue",
+"Black",
+"Artifact",
+"Land",
+"Multi"].each do |name|
+  Color.create!(:name => name)
+end
+
+[["M2010", "M10"],
+["Zendikar", "ZK"],
+["Conflux", "CF"],
+["9th Core", "IX"],
+["10th Ed", "X"]].each do |name, abbr|
+  Expansion.create!(:name => name, :abbr => abbr)
+end

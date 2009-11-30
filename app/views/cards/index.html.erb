@@ -1,0 +1,14 @@
+<%= error_messages_for 'card' %>
+<% unless @color.nil? %><h2><%= @color.name.upcase %></h2><% end %>
+<%= render "form", :card => @card, :colors => @colors, :expansions => @expansions %>
+
+<table id="cards-table">
+  <tr>
+    <th>Name</th>
+    <th>Color</th>
+    <th>Expansion</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>
+  <%= render "table", :cards => @cards %>
+</table>

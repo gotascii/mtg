@@ -1,0 +1,4 @@
+page.insert_html :top, 'content', error_messages_for('card', :id => 'card-error', :class => nil, :header_message => nil, :message => nil)
+page.replace_html 'cards-table', :partial => 'table', :locals => {:cards => @cards}
+page << "$('#card-form-container').toggleClass('loading')"
+page << "stripe()"

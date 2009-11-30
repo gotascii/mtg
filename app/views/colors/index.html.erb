@@ -1,0 +1,5 @@
+<ul class="list">
+  <% @colors.each do |color| %>
+    <li><%= link_to color.name.upcase, cards_url(:color_id => color.id) %></li>
+  <% end %>
+</ul>
