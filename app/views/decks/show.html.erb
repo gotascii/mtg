@@ -1,4 +1,4 @@
-<h2><%= @deck.name.upcase %></h2>
+<h2><%= @deck.name.upcase %> (<%= link_to 'BUY', deck_shopping_list_url(@deck.id, :format => "txt") %>)</h2>
 <% form_for(@pick) do |f| %>
   <%= render "picks/form", :f => f, :pick => @pick, :colors => @colors %>
 <% end %>

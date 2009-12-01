@@ -1,5 +1,5 @@
 <td colspan="7" id="pick-<%= pick.id %>" class="form-container">
   <% remote_form_for pick, :loading => "$('#pick-#{pick.id}').toggleClass('loading')", :html => {:class => "inline"} do |f| %>
-    <%= render "tform", :f => f, :pick => pick, :colors => colors %>
+    <%= render "form", :f => f, :pick => pick, :colors => colors %>
   <% end %>
 </td>
