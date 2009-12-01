@@ -5,7 +5,7 @@ class Pick < ActiveRecord::Base
   })
 
   belongs_to :deck
-  belongs_to :card
+  belongs_to :card, :include => [:color, :expansion]
 
   def diff
     d = total - card.total
