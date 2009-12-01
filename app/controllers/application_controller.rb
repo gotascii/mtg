@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   def load_colors_with_cards
-    @colors = Color.with_cards.order_by_name
+    @colors = Color.with_cards
   end
 end

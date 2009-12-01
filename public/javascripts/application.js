@@ -14,6 +14,6 @@ $.fn.stripe = function() {
 function stripe() {
   $('tr, ul.list li').stripe();
 }
-$(function () {  
+$(function () {
   stripe();
 });

@@ -1,16 +1,10 @@
-<div id="card-form-container">
-  <% remote_form_for card, :loading => "$('#card-form-container').toggleClass('loading')" do |f| %>
-    <%= hidden_field_tag :color_id, @color.try(:id) %>
-    <%= f.text_field :name %>
-    <%= f.text_field :total, :class => 'total' %>
-
-    <% if @color.nil? %>
-      <%= f.select :color_id, options_from_collection_for_select(colors, 'id', 'name', card.color_id) %>      
-    <% else %>
-      <%= f.hidden_field :color_id %>
-    <% end %>
-
-    <%= f.select :expansion_id, options_from_collection_for_select(expansions, 'id', 'abbr', card.expansion_id) %>
-    <%= f.submit 'Save', :style => 'display:inline' %>
-  <% end %>
-</div>
+<%= hidden_field_tag :color_id, color.try(:id) %>
+<%= f.text_field :name %>
+<% if color.nil? %>
+  <%= f.select :color_id, options_from_collection_for_select(colors, 'id', 'name', card.color_id) %>
+<% else %>
+  <%= f.hidden_field :color_id %>
+<% end %>
+<%= f.select :expansion_id, options_from_collection_for_select(expansions, 'id', 'abbr', card.expansion_id) %>
+<%= f.text_field :total, :class => 'total' %>
+<%= f.submit 'Save', :style => 'display:inline' %>

@@ -1,0 +1,5 @@
+<td colspan="6" id="card-<%= card.id %>" class="form-container">
+  <% remote_form_for card, :loading => "$('#card-#{card.id}').toggleClass('loading')", :html => {:class => "inline"} do |f| %>
+    <%= render "form", :f => f, :card => card, :color => color, :expansions => expansions, :colors => colors %>
+  <% end %>
+</td>

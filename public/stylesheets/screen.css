@@ -22,9 +22,29 @@ td {
   padding: 10px;
 }
 
+td.form-container {
+  background-color: #2f2f2f;
+}
+
 th {
   padding: 10px;
   text-align: left;
+}
+
+th.name-heading {
+  width: 150px;
+}
+
+th.color-heading {
+  width: 50px;
+}
+
+th.expansion-heading {
+  width: 70px;
+}
+
+th.total-heading {
+  width: 35px;
 }
 
 h2 {
@@ -38,7 +58,11 @@ form {
 }
 
 form .total {
-  width: 50px;
+  width: 30px;
+}
+
+form.inline {
+  margin-bottom: 0;
 }
 
 p {
@@ -78,10 +102,16 @@ ul.nav li {
 }
 
 .loading {
- background: url(/images/spinner.gif) no-repeat 2px 4px; 
- height: 32px;
+  background-image: url('/images/spinner.gif');
+  background-repeat: no-repeat;
+  background-position: 2px 4px;
+  height: 32px;
 }
 
 .loading form {
-  display:none;
+  display: none;
+}
+
+td.loading {
+  background-position: 244px 10px;
 }

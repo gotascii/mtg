@@ -1,28 +1,7 @@
 <h2><%= @deck.name.upcase %></h2>
 <% form_for(@pick) do |f| %>
-  <%= f.hidden_field :deck_id %>
-  <p>
-    <%= f.select :card_id, option_groups_from_collection_for_select(@colors, 'cards', 'name', 'id', 'titleized_name') %>
-    <%= f.text_field :total, :class => 'total' %>
-    <%= f.submit 'Save' %>
-  </p>
+  <%= render "picks/form", :f => f, :colors => @colors %>
 <% end %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Color</th>
-    <th>Expansion</th>
-    <th>Deck</th>
-    <th>Need</th>
-    <th>Action</th>
-  </tr>
-  <% @picks.each do |pick| %>
-    <tr>
-      <%= card_columns(pick.card) %>
-      <td><%= pick.total %></td>
-      <td><%= pick.diff %></td>
-      <td><%= link_to 'Delete', pick_url(pick), :method => :delete %></td>
-    </tr>
-  <% end %>
+<table id="picks-table">
+  <%= render "picks/table", :picks => @picks %>
 </table>

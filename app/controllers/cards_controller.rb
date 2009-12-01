@@ -1,28 +1,39 @@
 class CardsController < ApplicationController
   before_filter :load_color
+  before_filter :load_card, :only => [:destroy, :edit, :update]
 
   def index
     @card = Card.new(:color_id => @color.try(:id))
-    @colors = Color.order_by_name
-    @expansions = Expansion.order_by_name
+    @colors = Color.all
+    @expansions = Expansion.all
     load_cards
   end
 
   def create
     @card = Card.create(params[:card])
-    respond_to do |format|
-      format.html { redirect_to cards_url }
-      format.js { load_cards }
-    end
+    load_cards
   end
 
   def destroy
-    @card = Card.find(params[:id])
     @card.delete
     redirect_to cards_url(:color_id => @color.try(:id))
   end
 
+  def edit
+    @colors = Color.all
+    @expansions = Expansion.all
+  end
+
+  def update
+    @card.update_attributes(params[:card])
+    load_cards
+  end
+
   private
+  def load_card
+    @card = Card.find(params[:id])
+  end
+
   def load_color
     @color = Color.find(params[:color_id]) unless params[:color_id].blank?
   end

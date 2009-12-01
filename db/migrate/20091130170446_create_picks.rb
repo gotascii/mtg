@@ -3,7 +3,7 @@ class CreatePicks < ActiveRecord::Migration
     create_table :picks do |t|
       t.integer :deck_id
       t.integer :card_id
-      t.integer :total, :default => 0
+      t.integer :total, :default => 4
     end
   end
 

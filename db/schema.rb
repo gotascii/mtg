@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20091130170446) do
   create_table "picks", :force => true do |t|
     t.integer "deck_id"
     t.integer "card_id"
-    t.integer "total",   :default => 0
+    t.integer "total",   :default => 4
   end
 
 end
