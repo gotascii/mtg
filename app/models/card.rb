@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
 
   named_scope :order_by_color_name, {
     :include => [:color, :expansion],
-    :order => 'colors.name, expansions.name, cards.name'
+    :order => 'colors.name, expansions.abbr, cards.name'
   }
 
   def titleized_name
