@@ -1,7 +1,7 @@
 class Pick < ActiveRecord::Base
   default_scope ({
-    :joins => "JOIN cards ON cards.id = picks.card_id JOIN colors ON colors.id = cards.color_id JOIN expansions ON expansions.id = cards.expansion_id",
-    :order => 'colors.name, expansions.abbr, cards.name'
+    :joins => "JOIN cards ON cards.id = picks.card_id",
+    :order => 'cards.name'
   })
 
   belongs_to :deck

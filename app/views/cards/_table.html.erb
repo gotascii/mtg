@@ -1,8 +1,8 @@
 <tr>
-  <th class="name-heading">Name</th>
-  <th class="color-heading">Color</th>
-  <th class="expansion-heading">Expansion</th>
-  <th class="total-heading">Total</th>
+  <th class="name-heading"><%= order @search, :by => :name, :as => 'Name', :params => {:color_id => @color.try(:id)} %></th>
+  <th class="color-heading"><%= order @search, :by => :color_name, :as => 'Color', :params => {:color_id => @color.try(:id)} %></th>
+  <th class="expansion-heading"><%= order @search, :by => :expansion_abbr, :as => 'Expansion', :params => {:color_id => @color.try(:id)} %></th>
+  <th class="total-heading"><%= order @search, :by => :total, :as => 'Total', :params => {:color_id => @color.try(:id)} %></th>
   <th colspan="2">Action</th>
 </tr>
 <% cards.each do |card| %>

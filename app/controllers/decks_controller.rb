@@ -5,7 +5,6 @@ class DecksController < ApplicationController
 
   def index
     @deck = Deck.new
-    @decks = Deck.order_by_name
   end
 
   def show
@@ -36,6 +35,6 @@ class DecksController < ApplicationController
   end
 
   def load_decks
-    @decks = Deck.order_by_name
+    @decks = Deck.all
   end
 end

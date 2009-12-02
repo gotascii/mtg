@@ -40,6 +40,7 @@ class CardsController < ApplicationController
   
   def load_cards
     @cards = @color.nil? ? Card : @color.cards
-    @cards = @cards.order_by_color_name
+    @search = @cards.search(params[:search])
+    @cards = @search.all
   end
 end
