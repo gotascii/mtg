@@ -12,8 +12,4 @@ class Pick < ActiveRecord::Base
     conds ||= {}
     super({'order' => 'ascend_by_card_name'}.merge(conds))
   end
-
-  def need
-    attributes["need"].to_i > 0 ? attributes["need"] : 0
-  end
 end
