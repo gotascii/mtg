@@ -8,7 +8,8 @@ class DecksController < ApplicationController
   end
 
   def show
-    @picks = @deck.picks
+    @search = @deck.picks.with_need.search(params[:search])
+    @picks = @search.all
     @pick = Pick.new(:deck => @deck)
   end
 
