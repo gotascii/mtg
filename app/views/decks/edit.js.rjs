@@ -1,0 +1,1 @@
+page.replace_html "deck-#{@deck.id}", :partial => 'inline_form', :locals => {:deck => @deck}

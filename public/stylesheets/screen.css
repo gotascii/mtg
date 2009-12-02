@@ -11,6 +11,11 @@ a {
   color: #fff;
 }
 
+a.action {
+  float:right;
+  margin-right:10px;
+}
+
 table {
   border-spacing: 0;
   background: #222;
@@ -62,6 +67,10 @@ form .total {
 }
 
 form.inline {
+  margin-bottom: 0;
+}
+
+ul.list form {
   margin-bottom: 0;
 }
 

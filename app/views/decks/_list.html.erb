@@ -1,0 +1,7 @@
+<% decks.each do |deck| %>
+  <li id="deck-<%= deck.id %>">
+    <%= link_to deck.name.upcase, deck %>
+    <%= link_to 'Delete', deck_url(deck), :method => :delete, :class => "action" %>
+    <%= link_to_remote 'Rename', :url => edit_deck_url(deck), :method => :get, :html => {:class => "action"} %>
+  </li>
+<% end %>

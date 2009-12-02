@@ -1,0 +1,3 @@
+<% remote_form_for deck, :loading => "$('#deck-#{deck.id}').toggleClass('loading')", :html => {:class => "inline"} do |f| %>
+  <%= render "form", :f => f %>
+<% end %>

@@ -1,6 +1,6 @@
-<%= render "form", :deck => @deck %>
-<ul class="list">
-  <% @decks.each do |deck| %>
-    <li><%= link_to deck.name.upcase, deck %></li>
-  <% end %>
+<% form_for @deck do |f| %>
+  <%= render "form", :f => f %>
+<% end %>
+<ul id="decks-list" class="list">
+  <%= render "list", :decks => @decks %>
 </ul>
