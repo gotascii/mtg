@@ -1,14 +1,14 @@
 <tr>
   <th class="name-heading"><%= card_order_link(search, :name, 'Name', color) %></th>
-  <th class="color-heading"><%= card_order_link(search, :color_name, 'Color', color) %></th>
-  <th class="expansion-heading"><%= card_order_link(search, :expansion_abbr, 'Expansion', color) %></th>
-  <th class="total-heading"><%= card_order_link(search, :total, 'Total', color) %></th>
+  <th class="color-heading data"><%= card_order_link(search, :color_name, 'Color', color) %></th>
+  <th class="expansion-heading data"><%= card_order_link(search, :expansion_abbr, 'Expansion', color) %></th>
+  <th class="total-heading data"><%= card_order_link(search, :total, 'Total', color) %></th>
   <th colspan="2">Action</th>
 </tr>
 <% cards.each do |card| %>
   <tr id="card-<%= card.id %>">
     <%= card_columns(card) %>
-    <td><%= card.total %></td>
+    <td class="data"><%= card.total %></td>
     <td><%= link_to_remote 'Edit', :url => edit_card_url(card, :color_id => color.try(:id), :search => {:order => search.order}), :method => :get %></td>
     <td><%= link_to 'Delete', card_url(card, :color_id => color.try(:id)), :method => :delete %></td>
   </tr>

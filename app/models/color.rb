@@ -9,4 +9,8 @@ class Color < ActiveRecord::Base
     :joins => "JOIN cards on cards.color_id = colors.id",
     :select => "DISTINCT colors.*"
   }
+
+  def icon
+    "#{name.downcase}.png"
+  end
 end

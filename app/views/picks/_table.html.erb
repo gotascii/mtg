@@ -1,16 +1,16 @@
 <tr>
   <th><%= pick_order_link(search, :card_name, 'Name', deck) %></th>
-  <th><%= pick_order_link(search, :card_color_name, 'Color', deck) %></th>
-  <th><%= pick_order_link(search, :card_expansion_abbr, 'Expansion', deck) %></th>
-  <th><%= pick_order_link(search, :total, 'Total', deck) %></th>
-  <th><%= pick_order_link(search, :need, 'Need', deck) %></th>
+  <th class="data"><%= pick_order_link(search, :card_color_name, 'Color', deck) %></th>
+  <th class="data"><%= pick_order_link(search, :card_expansion_abbr, 'Expansion', deck) %></th>
+  <th class="data"><%= pick_order_link(search, :total, 'Total', deck) %></th>
+  <th class="data"><%= pick_order_link(search, :need, 'Need', deck) %></th>
   <th colspan="2">Action</th>
 </tr>
 <% picks.each do |pick| %>
   <tr id="pick-<%= pick.id %>">
     <%= card_columns(pick.card) %>
-    <td><%= pick.total %></td>
-    <td><%= pick.need %></td>
+    <td class="data"><%= pick.total %></td>
+    <td class="data"><%= pick.need %></td>
     <td><%= link_to_remote 'Edit', :url => edit_pick_url(pick, :search => {:order => search.order}), :method => :get %></td>
     <td><%= link_to 'Delete', pick_url(pick), :method => :delete %></td>
   </tr>
