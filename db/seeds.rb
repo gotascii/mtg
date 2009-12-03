@@ -17,7 +17,8 @@ end
 ["Fallen Empires", "FE", "Exp_sym_fallenempires.png"],
 ["Shards of Alara", "SA", "20px-Shards_of_Alara.png"],
 ["Alara Reborn", "AR", "Alara_Reborn_Common.gif"],
-["Shadowmoor", "SM", "21px-Exp_sym_shadowmoor.png"]].each do |name, abbr, icon|
+["Shadowmoor", "SM", "21px-Exp_sym_shadowmoor.png"],
+["Morningtide", "MT", "20px-Exp_sym_morningtide.png"]].each do |name, abbr, icon|
   e = Expansion.find_or_create_by_name_and_abbr(name, abbr)
   e.icon = icon
   e.save
