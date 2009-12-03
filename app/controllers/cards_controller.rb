@@ -22,6 +22,7 @@ class CardsController < ApplicationController
   def edit
     @colors = Color.all
     @expansions = Expansion.all
+    load_search
   end
 
   def update
@@ -37,10 +38,15 @@ class CardsController < ApplicationController
   def load_color
     @color = Color.find(params[:color_id]) unless params[:color_id].blank?
   end
-  
-  def load_cards
+
+  def load_search
     @cards = @color.nil? ? Card : @color.cards
+    @cards = @cards.with_color_and_expansion
     @search = @cards.search(params[:search])
+  end
+
+  def load_cards
+    load_search
     @cards = @search.all
   end
 end

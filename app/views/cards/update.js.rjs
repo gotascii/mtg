@@ -1,2 +1,2 @@
-page.replace_html 'cards-table', :partial => 'table', :locals => {:cards => @cards}
+page.replace_html 'cards-table', :partial => 'table', :locals => {:cards => @cards, :color => @color, :search => @search}
 page << "stripe()"

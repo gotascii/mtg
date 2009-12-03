@@ -6,6 +6,10 @@ module ApplicationHelper
     end.join
   end
 
+  def order_link(search, field, as, color)
+    order(search, :by => field, :as => as, :params => {:controller => 'cards', :action => 'index', :color_id => color.try(:id)})
+  end
+
   def clippy(text, bgcolor='#2f2f2f')
     html = <<-EOF
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"

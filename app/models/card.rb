@@ -3,6 +3,8 @@ class Card < ActiveRecord::Base
   belongs_to :expansion
   validates_presence_of :name, :total
 
+  named_scope :with_color_and_expansion, { :include => [:color, :expansion] }
+
   named_scope :descend_by_color_name, {
     :joins => :color,
     :order => "colors.name DESC, cards.name ASC"
