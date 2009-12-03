@@ -8,13 +8,13 @@ class Deck < ActiveRecord::Base
 
   def shopping_list
     picks.with_need.wanted.collect do |pick|
-      "#{pick.need} #{pick.card.titleized_name}"
+      "#{pick.need} #{pick.card.name}"
     end.join("\n")
   end
 
   def complete_list
     picks.collect do |pick|
-      "#{pick.total} #{pick.card.titleized_name}"
+      "#{pick.total} #{pick.card.name}"
     end.join("\n")
   end
 end
