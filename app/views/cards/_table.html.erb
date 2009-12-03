@@ -1,8 +1,8 @@
 <tr>
-  <th class="name-heading"><%= order_link(search, :name, 'Name', color) %></th>
-  <th class="color-heading"><%= order_link(search, :color_name, 'Color', color) %></th>
-  <th class="expansion-heading"><%= order_link(search, :expansion_abbr, 'Expansion', color) %></th>
-  <th class="total-heading"><%= order_link(search, :total, 'Total', color) %></th>
+  <th class="name-heading"><%= card_order_link(search, :name, 'Name', color) %></th>
+  <th class="color-heading"><%= card_order_link(search, :color_name, 'Color', color) %></th>
+  <th class="expansion-heading"><%= card_order_link(search, :expansion_abbr, 'Expansion', color) %></th>
+  <th class="total-heading"><%= card_order_link(search, :total, 'Total', color) %></th>
   <th colspan="2">Action</th>
 </tr>
 <% cards.each do |card| %>
