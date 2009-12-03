@@ -3,16 +3,18 @@ class Deck < ActiveRecord::Base
   validates_presence_of :name
 
   def total
-    picks.collect(&:total).sum
-  end
-
-  def wanted_picks
-    picks.with_need.select{|p| p.need > 0 }
+    picks.sum(:total)
   end
 
   def shopping_list
-    wanted_picks.collect do |pick|
+    picks.with_need.wanted.collect do |pick|
       "#{pick.need} #{pick.card.titleized_name}"
+    end.join("\n")
+  end
+
+  def complete_list
+    picks.collect do |pick|
+      "#{pick.total} #{pick.card.titleized_name}"
     end.join("\n")
   end
 end

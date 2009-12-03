@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def load_colors_with_cards
     @colors = Color.with_cards
   end
+  
+  def load_deck
+    @deck = Deck.find(params[:deck_id])
+  end
 end

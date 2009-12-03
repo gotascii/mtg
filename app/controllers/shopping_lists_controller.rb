@@ -1,5 +1,6 @@
 class ShoppingListsController < ApplicationController
+  before_filter :load_deck
+
   def show
-    @deck = Deck.find(params[:deck_id])
   end
 end
