@@ -1,8 +1,7 @@
-<%= error_messages_for 'card' %>
 <% unless @color.nil? %><h2><%= @color.name.upcase %></h2><% end %>
 <div id="card-form-container">
   <% remote_form_for @card, :loading => "$('#card-form-container').toggleClass('loading')" do |f| %>
-    <%= render "form", :f => f, :card => @card, :color => @color, :expansions => @expansions, :colors => @colors %>
+    <%= render "form", :f => f, :card => @card, :color => @color, :expansions => @expansions, :colors => @colors, :search => @search %>
   <% end %>
 </div>
 <table id="cards-table">

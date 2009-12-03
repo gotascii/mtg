@@ -6,8 +6,12 @@ module ApplicationHelper
     end.join
   end
 
-  def order_link(search, field, as, color)
+  def card_order_link(search, field, as, color)
     order(search, :by => field, :as => as, :params => {:controller => 'cards', :action => 'index', :color_id => color.try(:id)})
+  end
+
+  def pick_order_link(search, field, as, deck)
+    order(search, :by => field, :as => as, :params => {:controller => 'decks', :action => 'show', :id => deck.id})
   end
 
   def clippy(text, bgcolor='#2f2f2f')

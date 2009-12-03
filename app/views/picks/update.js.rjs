@@ -1,2 +1,2 @@
-page.replace_html 'picks-table', :partial => 'table', :locals => {:picks => @picks}
+page.replace_html 'picks-table', :partial => 'table', :locals => {:picks => @picks, :search => @search, :deck => @deck}
 page << "stripe()"

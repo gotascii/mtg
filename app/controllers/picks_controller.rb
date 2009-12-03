@@ -13,14 +13,21 @@ class PicksController < ApplicationController
 
   def edit
     load_colors_with_cards
+    load_picks
   end
 
   def update
     @pick.update_attributes(params[:pick])
-    @picks = @pick.deck.picks
+    load_picks
   end
 
   private
+  def load_picks
+    @deck = @pick.deck
+    @search = @deck.picks.with_need.search(params[:search])
+    @picks = @search.all
+  end
+
   def load_pick
     @pick = Pick.find(params[:id])
   end

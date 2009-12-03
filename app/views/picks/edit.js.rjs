@@ -1,1 +1,1 @@
-page.replace "pick-#{@pick.id}", :partial => 'inline_form', :locals => {:pick => @pick, :colors => @colors}
+page.replace "pick-#{@pick.id}", :partial => 'inline_form', :locals => {:pick => @pick, :colors => @colors, :search => @search}
