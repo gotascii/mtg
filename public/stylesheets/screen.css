@@ -31,6 +31,10 @@ td.form-container {
   background-color: #2f2f2f;
 }
 
+td.expansion {
+  text-align: center;
+}
+
 th {
   padding: 10px;
   text-align: left;

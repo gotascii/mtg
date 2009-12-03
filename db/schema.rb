@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091130170446) do
+ActiveRecord::Schema.define(:version => 20091203142413) do
 
   create_table "cards", :force => true do |t|
     t.integer "color_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20091130170446) do
   create_table "expansions", :force => true do |t|
     t.string "name"
     t.string "abbr"
+    t.string "icon"
   end
 
   create_table "picks", :force => true do |t|
