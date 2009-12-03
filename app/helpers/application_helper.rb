@@ -2,7 +2,7 @@ module ApplicationHelper
   def card_columns(card)
     html = content_tag :td, link_to(card.titleized_name, card.url, :target => "_mtg")
     html += content_tag :td, card.color.name
-    html += content_tag :td, image_tag(card.expansion.icon, :width => 20, :alt => card.expansion.name), :class => "expansion"
+    html += content_tag :td, image_tag(card.expansion.icon, :width => 20, :title => card.expansion.name), :class => "expansion"
   end
 
   def card_order_link(search, field, as, color)
