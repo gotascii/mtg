@@ -1,6 +1,6 @@
 class Pick < ActiveRecord::Base
   belongs_to :deck
-  belongs_to :card, :include => [:color, :expansion]
+  belongs_to :card
 
   named_scope :with_need, {
     :select => "picks.*, MAX(0, (picks.total - cards.total)) AS need",

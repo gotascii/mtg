@@ -1,19 +1,11 @@
 class Card < ActiveRecord::Base
-  belongs_to :color
+  attr_accessor :color_ids
+
+  has_many :shades, :dependent => :destroy
+  has_many :colors, :through => :shades
+
   belongs_to :expansion
   validates_presence_of :name, :total
-
-  named_scope :with_color_and_expansion, { :include => [:color, :expansion] }
-
-  named_scope :descend_by_color_name, {
-    :joins => :color,
-    :order => "colors.name DESC, cards.name ASC"
-  }
-
-  named_scope :ascend_by_color_name, {
-    :joins => :color,
-    :order => "colors.name ASC, cards.name ASC"
-  }
 
   named_scope :descend_by_expansion_abbr, {
     :joins => :expansion,
@@ -28,6 +20,17 @@ class Card < ActiveRecord::Base
   def self.search(conds = {})
     conds ||= {}
     super({'order' => 'ascend_by_name'}.merge(conds))
+  end
+
+  def color_ids=(ids)
+    new_shades = ids.collect do |color_id|
+      Shade.new(:color_id => color_id, :card_id => self.id)
+    end
+    self.shades = new_shades
+  end
+
+  def color_ids
+    shades.collect(&:color_id)
   end
 
   def titleized_name

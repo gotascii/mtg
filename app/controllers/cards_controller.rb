@@ -3,7 +3,8 @@ class CardsController < ApplicationController
   before_filter :load_card, :only => [:destroy, :edit, :update]
 
   def index
-    @card = Card.new(:color_id => @color.try(:id))
+    @card = Card.new
+    @card.color_ids = [@color.try(:id)]
     @colors = Color.all
     @expansions = Expansion.all
     load_cards
@@ -36,12 +37,11 @@ class CardsController < ApplicationController
   end
 
   def load_color
-    @color = Color.find(params[:color_id]) unless params[:color_id].blank?
+    @color = Color.find_by_id(params[:color_id])
   end
 
   def load_search
     @cards = @color.nil? ? Card : @color.cards
-    @cards = @cards.with_color_and_expansion
     @search = @cards.search(params[:search])
   end
 

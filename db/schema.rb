@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203142413) do
+ActiveRecord::Schema.define(:version => 20091204021610) do
 
   create_table "cards", :force => true do |t|
     t.integer "color_id"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20091203142413) do
     t.integer "deck_id"
     t.integer "card_id"
     t.integer "total",   :default => 4
+  end
+
+  create_table "shades", :force => true do |t|
+    t.integer "color_id"
+    t.integer "card_id"
   end
 
 end
