@@ -9,10 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091204021610) do
+ActiveRecord::Schema.define(:version => 20091204140959) do
 
   create_table "cards", :force => true do |t|
-    t.integer "color_id"
     t.integer "expansion_id"
     t.string  "name"
     t.integer "total",        :default => 0
