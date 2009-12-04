@@ -16,7 +16,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.delete
-    redirect_to cards_url(:color_id => @color.try(:id))
+    redirect_to cards_url(:color_id => @color.try(:id), :search => params[:search])
   end
 
   def edit

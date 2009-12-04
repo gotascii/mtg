@@ -9,7 +9,7 @@
   <tr id="card-<%= card.id %>">
     <%= card_columns(card) %>
     <td class="data"><%= card.total %></td>
-    <td><%= link_to_remote 'Edit', :url => edit_card_url(card, :color_id => color.try(:id), :search => {:order => search.order}), :method => :get %></td>
-    <td><%= link_to 'Delete', card_url(card, :color_id => color.try(:id)), :method => :delete %></td>
+    <td><%= link_to_remote 'Edit', :url => edit_card_url(card, :color_id => color.try(:id), :search => search.conditions), :method => :get %></td>
+    <td><%= link_to 'Delete', card_url(card, :color_id => color.try(:id), :search => search.conditions), :method => :delete %></td>
   </tr>
 <% end %>

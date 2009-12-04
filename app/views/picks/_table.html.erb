@@ -11,7 +11,7 @@
     <%= card_columns(pick.card) %>
     <td class="data"><%= pick.total %></td>
     <td class="data"><%= pick.need %></td>
-    <td><%= link_to_remote 'Edit', :url => edit_pick_url(pick, :search => {:order => search.order}), :method => :get %></td>
-    <td><%= link_to 'Delete', pick_url(pick), :method => :delete %></td>
+    <td><%= link_to_remote 'Edit', :url => edit_pick_url(pick, :search => search.conditions), :method => :get %></td>
+    <td><%= link_to 'Delete', pick_url(pick, :search => search.conditions), :method => :delete %></td>
   </tr>
 <% end %>
