@@ -23,10 +23,10 @@ class Card < ActiveRecord::Base
   end
 
   def color_ids=(ids)
-    new_shades = ids.collect do |color_id|
-      Shade.new(:color_id => color_id, :card_id => self.id)
+    self.shades = []
+    ids.each do |color_id|
+      self.shades.build(:color_id => color_id)
     end
-    self.shades = new_shades
   end
 
   def color_ids

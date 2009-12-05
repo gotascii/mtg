@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(params[:card])
+    @card = Card.create!(params[:card])
     load_cards
   end
 

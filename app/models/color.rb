@@ -2,7 +2,7 @@ class Color < ActiveRecord::Base
   default_scope :order => :name
 
   has_many :shades
-  has_many :cards, :through => :shades
+  has_many :cards, :through => :shades, :order => "cards.name ASC"
 
   validates_presence_of :name
   validates_uniqueness_of :name
