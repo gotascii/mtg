@@ -4,6 +4,7 @@
     <%= render "form", :f => f, :card => @card, :color => @color, :expansions => @expansions, :colors => @colors, :card_types => @card_types, :search => @search %>
   <% end %>
 </div>
+<div id="flash" <%= flash_class %>><%= flash_message %></div>
 <table id="cards-table">
   <%= render "table", :cards => @cards, :color => @color, :search => @search %>
 </table>

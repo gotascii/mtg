@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def flash_class
+    classes = flash.keys.collect do |k|
+      k.to_s if flash[k]
+    end.compact
+    classes.empty? ? "" : "class=#{classes.join(' ')}"
+  end
+
+  def flash_message
+    flash.values.join("<br/>")
+  end
+
   def color_image_tags(card)
     card.colors.collect do |color|
       image_tag(color.icon, :title => color.name)
