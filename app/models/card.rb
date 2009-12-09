@@ -4,6 +4,7 @@ class Card < ActiveRecord::Base
   has_many :shades, :dependent => :destroy
   has_many :colors, :through => :shades
 
+  belongs_to :card_type
   belongs_to :expansion
   validates_presence_of :name, :total
 
@@ -16,6 +17,18 @@ class Card < ActiveRecord::Base
     :joins => :expansion,
     :order => "expansions.name ASC, cards.name ASC"
   }
+
+  named_scope :descend_by_card_type_abbr, {
+    :joins => :card_type,
+    :order => "card_types.abbr DESC, cards.name ASC"
+  }
+
+  named_scope :ascend_by_card_type_abbr, {
+    :joins => :card_type,
+    :order => "card_types.name ASC, cards.name ASC"
+  }
+
+  named_scope :include_associations, :include => [:expansion, :card_type, :colors]
 
   def self.search(conds = {})
     conds ||= {}

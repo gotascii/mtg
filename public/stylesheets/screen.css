@@ -74,6 +74,10 @@ form.inline {
   margin-bottom: 0;
 }
 
+form .name {
+  width: 197px;
+}
+
 ul.list form {
   margin-bottom: 0;
 }
@@ -117,8 +121,7 @@ ul.nav li {
 .loading {
   background-image: url('/images/spinner.gif');
   background-repeat: no-repeat;
-  background-position: 2px 4px;
-  height: 32px;
+  height: 12px;
 }
 
 .loading form {

@@ -1,0 +1,89 @@
+--- !ruby/object:Gem::Specification 
+name: constant_cache
+version: !ruby/object:Gem::Version 
+  version: 0.0.2
+platform: ruby
+authors: 
+- Patrick Reagan
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2008-04-15 00:00:00 -04:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: activerecord
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 2.0.2
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: activesupport
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 2.0.2
+    version: 
+description: Patches ActiveRecord::Base to add a caches_constants class method that will cache lookup data for your application.
+email: patrick.reagan@viget.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README
+- MIT-LICENSE
+- HISTORY
+files: 
+- MIT-LICENSE
+- README
+- Rakefile
+- HISTORY
+- lib/constant_cache
+- lib/constant_cache/cache_methods.rb
+- lib/constant_cache/core_ext.rb
+- lib/constant_cache/version.rb
+- lib/constant_cache.rb
+- spec/examples
+- spec/examples/constant_cache
+- spec/examples/constant_cache/cache_methods_spec.rb
+- spec/examples/constant_cache/core_ext_spec.rb
+- spec/spec_helper.rb
+has_rdoc: true
+homepage: http://www.viget.com/extend/
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 2
+summary: Patches ActiveRecord::Base to add a caches_constants class method that will cache lookup data for your application.
+test_files: []
+

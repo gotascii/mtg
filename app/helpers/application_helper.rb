@@ -8,7 +8,8 @@ module ApplicationHelper
   def card_columns(card)
     html = content_tag :td, link_to(card.titleized_name, card.url, :target => "_mtg")
     html += content_tag :td, color_image_tags(card), :class => "data"
-    html += content_tag :td, image_tag(card.expansion.icon, :width => 20, :title => card.expansion.name), :class => "data"
+    html += content_tag :td, image_tag(card.expansion.icon, :title => card.expansion.name), :class => "data"
+    html += content_tag :td, card.card_type.try(:abbr), :class => "data"
   end
 
   def card_order_link(search, field, as, color)

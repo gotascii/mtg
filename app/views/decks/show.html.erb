@@ -1,5 +1,5 @@
 <h2>
-  <%= @deck.name.upcase %> <%= @deck.total %>
+  <%= @deck.to_s %>
   <%= link_to 'BUY', deck_shopping_list_url(@deck.id, :format => "txt") %>
   <%= clippy(@deck.shopping_list) %>
   <%= link_to 'LIST', deck_complete_list_url(@deck.id, :format => "txt") %>

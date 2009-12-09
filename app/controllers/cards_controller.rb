@@ -1,12 +1,11 @@
 class CardsController < ApplicationController
   before_filter :load_color
   before_filter :load_card, :only => [:destroy, :edit, :update]
+  before_filter :load_types, :only => [:index, :edit]
 
   def index
     @card = Card.new
     @card.color_ids = [@color.try(:id)]
-    @colors = Color.all
-    @expansions = Expansion.all
     load_cards
   end
 
@@ -21,8 +20,6 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @colors = Color.all
-    @expansions = Expansion.all
     load_search
   end
 
@@ -32,6 +29,12 @@ class CardsController < ApplicationController
   end
 
   private
+  def load_types
+    @colors = Color.all
+    @expansions = Expansion.all
+    @card_types = CardType.all
+  end
+
   def load_card
     @card = Card.find(params[:id])
   end
@@ -42,6 +45,7 @@ class CardsController < ApplicationController
 
   def load_search
     @cards = @color.nil? ? Card : @color.cards
+    @cards = @cards.include_associations
     @search = @cards.search(params[:search])
   end
 

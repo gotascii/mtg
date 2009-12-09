@@ -1,5 +1,4 @@
 class DecksController < ApplicationController
-  before_filter :load_colors_with_cards, :only => [:show]
   before_filter :load_deck, :only => [:show, :destroy, :edit, :update]
   before_filter :load_decks, :only => [:index, :update]
 
@@ -8,6 +7,8 @@ class DecksController < ApplicationController
   end
 
   def show
+    load_colors_with_cards
+    @colors << CardType::LAND
     @search = @deck.picks.with_need.search(params[:search])
     @picks = @search.all
     @pick = Pick.new(:deck => @deck)

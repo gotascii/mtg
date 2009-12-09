@@ -1,1 +1,1 @@
-page.replace "card-#{@card.id}", :partial => 'inline_form', :locals => {:card => @card, :color => @color, :colors => @colors, :expansions => @expansions, :search => @search}
+page.replace "card-#{@card.id}", :partial => 'inline_form', :locals => {:card => @card, :color => @color, :colors => @colors, :expansions => @expansions, :card_types => @card_types, :search => @search}

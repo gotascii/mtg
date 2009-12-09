@@ -13,6 +13,7 @@ class PicksController < ApplicationController
 
   def edit
     load_colors_with_cards
+    @colors << CardType::LAND
     load_picks
   end
 

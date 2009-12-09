@@ -7,6 +7,14 @@ class Pick < ActiveRecord::Base
     :joins => :card
   }
   named_scope :wanted, :conditions => ["need > 0"]
+
+  CardType.all.each do |card_type|
+    named_scope card_type.scope_method_name, {
+      :joins => :card,
+      :conditions => ["cards.card_type_id = ?", card_type.id]
+    }
+  end
+
   named_scope :descend_by_need, :order => "need DESC, cards.name ASC"
   named_scope :ascend_by_need, :order => "need ASC, cards.name ASC"
 

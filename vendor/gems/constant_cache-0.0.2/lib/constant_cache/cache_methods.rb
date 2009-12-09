@@ -45,12 +45,7 @@ module ConstantCache
         self.cache_options = {:key => :name, :limit => ConstantCache::CHARACTER_LIMIT}.merge(additional_options)
         
         raise ConstantCache::InvalidLimitError, "Limit of #{self.cache_options[:limit]} is invalid" if self.cache_options[:limit] < 1        
-        # find(:all).each {|model| model.set_instance_as_constant }
-      end
-
-      def const_missing(name)
         find(:all).each {|model| model.set_instance_as_constant }
-        const_get(name.to_sym)
       end
     end
 
