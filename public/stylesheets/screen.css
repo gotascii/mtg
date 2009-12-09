@@ -121,7 +121,7 @@ ul.nav li {
 .loading {
   background-image: url('/images/spinner.gif');
   background-repeat: no-repeat;
-  height: 12px;
+  height: 23px;
 }
 
 .loading form {
@@ -130,4 +130,5 @@ ul.nav li {
 
 td.loading {
   background-position: 244px 10px;
+  height: 12px;
 }
