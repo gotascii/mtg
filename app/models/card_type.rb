@@ -1,8 +1,6 @@
 class CardType < ActiveRecord::Base
   default_scope :order => :abbr
 
-  caches_constants
-
   has_many :cards, :order => 'cards.name'
 
   validates_presence_of :name, :abbr

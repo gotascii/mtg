@@ -8,7 +8,6 @@ class DecksController < ApplicationController
 
   def show
     load_colors_with_cards
-    @colors << CardType::LAND
     @search = @deck.picks.with_need.search(params[:search])
     @picks = @search.all
     @pick = Pick.new(:deck => @deck)

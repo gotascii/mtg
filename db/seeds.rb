@@ -3,9 +3,7 @@
 "White",
 "Blue",
 "Black",
-"Artifact",
-"Land",
-"Multi"].each do |name|
+"None"].each do |name|
   Color.create(:name => name)
 end
 
