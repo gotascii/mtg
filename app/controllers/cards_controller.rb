@@ -56,6 +56,7 @@ class CardsController < ApplicationController
 
   def load_cards
     load_search
-    @cards = @search.paginate(:page => params[:page])
+    page = params[:page].blank? ? nil : params[:page]
+    @cards = @search.paginate(:page => page)
   end
 end
