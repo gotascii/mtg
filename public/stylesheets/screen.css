@@ -7,12 +7,15 @@ body {
   margin: 0;
 }
 
-.notify {
+#flash {
   width: 469px;
   background-color: #000;
-  margin-bottom: 10px;
-  padding: 10px;
   color: #11dd11;
+}
+
+.notify {
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 a {
@@ -29,6 +32,7 @@ table {
   background: #222;
   clear: both;
   width: 489px;
+  margin-bottom: 10px;
 }
 
 td {
@@ -139,4 +143,8 @@ ul.nav li {
 td.loading {
   background-position: 244px 10px;
   height: 12px;
+}
+
+.pagination {
+  margin-bottom: 10px;
 }

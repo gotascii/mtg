@@ -5,6 +5,8 @@
   <% end %>
 </div>
 <div id="flash" <%= flash_class %>><%= flash_message %></div>
+<%= will_paginate @cards, :class => "pagination" %>
 <table id="cards-table">
   <%= render "table", :cards => @cards, :color => @color, :search => @search %>
 </table>
+<%= will_paginate @cards, :class => "pagination" %>

@@ -1,3 +1,4 @@
+<%= hidden_field_tag :page, params[:page] %>
 <%= hidden_field_tag :color_id, color.try(:id) %>
 <%= hidden_field_tag 'search[order]', search.try(:order) %>
 <%= f.text_field :name, :class => "name" %>

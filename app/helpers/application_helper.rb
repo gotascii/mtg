@@ -10,6 +10,10 @@ module ApplicationHelper
     flash.values.join("<br/>")
   end
 
+  def flash_message?
+    !flash_message.blank?
+  end
+
   def color_image_tags(card)
     card.colors.collect do |color|
       image_tag(color.icon, :title => color.name)
@@ -57,5 +61,4 @@ module ApplicationHelper
       </object>
     EOF
   end
-
 end

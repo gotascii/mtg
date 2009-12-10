@@ -1,9 +1,7 @@
 page.replace_html 'cards-table', :partial => 'table', :locals => {:cards => @cards, :search => @search, :color => @color}
 page << "$('#card-form-container').toggleClass('loading')"
 page << "stripe()"
-page.replace_html 'flash', flash_message
-page << "$('#flash').addClass('notify')"
-
-
-# page.visual_effect :highlight, "current_report_item", :color => "#3BCC77", :duration => 15
-page.visual_effect(:highlight, "flash", :color => "#11dd11")
+if flash_message?
+  page.replace_html 'flash', flash_message
+  page << "$('#flash').addClass('notify')"
+end
