@@ -14,8 +14,13 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = Deck.create!(params[:deck])
-    redirect_to decks_url
+    @deck = Deck.new(params[:deck])
+    if @deck.save
+      redirect_to decks_url
+    else
+      load_decks
+      render "index"
+    end
   end
 
   def destroy

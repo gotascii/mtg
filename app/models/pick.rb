@@ -18,6 +18,8 @@ class Pick < ActiveRecord::Base
   named_scope :descend_by_need, :order => "need DESC, cards.name ASC"
   named_scope :ascend_by_need, :order => "need ASC, cards.name ASC"
 
+  validates_presence_of :card_id
+
   def need
     attributes["need"].to_i
   end

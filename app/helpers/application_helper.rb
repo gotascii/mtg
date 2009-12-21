@@ -3,7 +3,11 @@ module ApplicationHelper
     classes = flash.keys.collect do |k|
       k.to_s if flash[k]
     end.compact
-    classes.empty? ? "" : "class=#{classes.join(' ')}"
+    classes.join(' ')
+  end
+
+  def flash_class_attribute
+    flash_class.empty? ? "" : "class=#{classes.join(' ')}"
   end
 
   def flash_message

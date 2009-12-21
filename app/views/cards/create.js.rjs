@@ -3,5 +3,6 @@ page << "$('#card-form-container').toggleClass('loading')"
 page << "stripe()"
 if flash_message?
   page.replace_html 'flash', flash_message
-  page << "$('#flash').addClass('notify')"
+  page << "$('#flash').removeClass()"
+  page << "$('#flash').addClass('#{flash_class}')"
 end

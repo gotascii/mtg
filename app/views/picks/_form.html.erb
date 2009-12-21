@@ -1,7 +1,7 @@
 <%= f.hidden_field :deck_id %>
 <%= hidden_field_tag 'search[order]', search.try(:order) %>
 <p>
-  <%= f.select :card_id, option_groups_from_collection_for_select(colors, 'cards', 'name', 'id', 'titleized_name', pick.card_id) %>
+  <%= f.select :card_id, option_groups_from_collection_for_select(colors, 'cards_by_name', 'name', 'id', 'titleized_name', pick.card_id) %>
   <%= f.text_field :total, :class => 'total' %>
   <%= f.submit 'Save' %>
 </p>

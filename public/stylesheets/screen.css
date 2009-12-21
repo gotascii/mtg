@@ -10,10 +10,16 @@ body {
 #flash {
   width: 469px;
   background-color: #000;
-  color: #11dd11;
 }
 
 .notify {
+  color: #11dd11;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: #dd1111;
   padding: 10px;
   margin-bottom: 10px;
 }

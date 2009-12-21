@@ -15,4 +15,8 @@ class Color < ActiveRecord::Base
   def icon
     "#{name.downcase}.png"
   end
+  
+  def cards_by_name
+    cards.ascend_by_name
+  end
 end

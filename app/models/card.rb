@@ -7,6 +7,7 @@ class Card < ActiveRecord::Base
   belongs_to :card_type
   belongs_to :expansion
   validates_presence_of :name, :total
+  validates_uniqueness_of :name
 
   named_scope :descend_by_expansion_abbr, {
     :joins => :expansion,
@@ -29,6 +30,10 @@ class Card < ActiveRecord::Base
   }
 
   named_scope :include_associations, :include => [:expansion, :card_type, :colors]
+
+  def name=(val)
+    self[:name] = val.downcase
+  end
 
   def self.search(conds = {})
     conds ||= {}

@@ -4,7 +4,7 @@
     <%= render "form", :f => f, :card => @card, :color => @color, :expansions => @expansions, :colors => @colors, :card_types => @card_types, :search => @search %>
   <% end %>
 </div>
-<div id="flash" <%= flash_class %>><%= flash_message %></div>
+<div id="flash" <%= flash_class_attribute %>><%= flash_message %></div>
 <%= will_paginate @cards, :class => "pagination" %>
 <table id="cards-table">
   <%= render "table", :cards => @cards, :color => @color, :search => @search %>

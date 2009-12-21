@@ -30,14 +30,30 @@ class Deck < ActiveRecord::Base
 
   def shopping_list
     picks.with_need.wanted.collect do |pick|
-      "#{pick.need} #{pick.card.name}"
+      "#{pick.need}x #{pick.card.name}"
     end.join("\n")
   end
 
   def complete_list
     picks.collect do |pick|
-      "#{pick.total} #{pick.card.name}"
+      "#{pick.total}x #{pick.card.name}"
     end.join("\n")
   end
 
+  def complete_list=(val)
+    self.picks = val.collect do |line|
+      line =~ /(\d+)x(.*)/
+      total = $1
+      name = $2.strip.downcase
+      card = Card.find_by_name(name)
+      card = Card.new(:name => name) if card.nil?
+      Pick.new(:card => card, :total => total, :deck => self)
+    end
+  end
+
+  def validate_associated_records_for_picks
+    picks.each do |p|
+      errors.add_to_base "Could not find #{p.card.titleized_name}" unless p.valid?
+    end
+  end
 end

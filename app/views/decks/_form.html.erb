@@ -2,3 +2,5 @@
   <%= f.text_field :name %>
   <%= f.submit 'Save' %>
 </p>
+<p><%= f.text_area :complete_list, :rows => 4, :cols=> 28 %></p>
+<%= error_messages_for 'deck' %>
