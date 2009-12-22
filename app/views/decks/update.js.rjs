@@ -1,2 +1,3 @@
 page.replace_html 'decks-list', :partial => 'list', :locals => {:decks => @decks}
 page << "stripe()"
+ajax_flash_message(page)

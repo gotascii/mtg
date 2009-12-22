@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def ajax_flash_message(page)
+    if flash_message?
+      page.replace_html 'flash', flash_message
+      page << "$('#flash').removeClass()"
+      page << "$('#flash').addClass('#{flash_class}')"
+    end
+  end
+
   def flash_class
     classes = flash.keys.collect do |k|
       k.to_s if flash[k]
@@ -7,7 +15,7 @@ module ApplicationHelper
   end
 
   def flash_class_attribute
-    flash_class.empty? ? "" : "class=#{classes.join(' ')}"
+    flash_class.blank? ? "" : "class=#{flash_class}"
   end
 
   def flash_message

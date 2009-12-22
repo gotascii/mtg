@@ -1,6 +1,10 @@
 class Deck < ActiveRecord::Base
   has_many :picks,  :dependent => :destroy
+
+  before_validation :generate_new_picks
+  validate :presence_of_new_pick_cards
   validates_presence_of :name
+  after_save :populate_picks
 
   def total
     picks.sum(:total)
@@ -35,13 +39,21 @@ class Deck < ActiveRecord::Base
   end
 
   def complete_list
+    @complete_list ||= generate_complete_list
+  end
+
+  def generate_complete_list
     picks.collect do |pick|
       "#{pick.total}x #{pick.card.name}"
     end.join("\n")
   end
 
   def complete_list=(val)
-    self.picks = val.collect do |line|
+    @complete_list = val
+  end
+
+  def generate_new_picks
+    @new_picks = complete_list.collect do |line|
       line =~ /(\d+)x(.*)/
       total = $1
       name = $2.strip.downcase
@@ -51,9 +63,13 @@ class Deck < ActiveRecord::Base
     end
   end
 
-  def validate_associated_records_for_picks
-    picks.each do |p|
+  def presence_of_new_pick_cards
+    @new_picks.each do |p|
       errors.add_to_base "Could not find #{p.card.titleized_name}" unless p.valid?
     end
+  end
+
+  def populate_picks
+    self.picks = @new_picks if valid?
   end
 end

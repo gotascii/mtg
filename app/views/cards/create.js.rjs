@@ -1,8 +1,4 @@
 page.replace_html 'cards-table', :partial => 'table', :locals => {:cards => @cards, :search => @search, :color => @color}
 page << "$('#card-form-container').toggleClass('loading')"
 page << "stripe()"
-if flash_message?
-  page.replace_html 'flash', flash_message
-  page << "$('#flash').removeClass()"
-  page << "$('#flash').addClass('#{flash_class}')"
-end
+ajax_flash_message(page)

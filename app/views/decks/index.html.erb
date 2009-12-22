@@ -1,6 +1,7 @@
 <% form_for @deck do |f| %>
   <%= render "form", :f => f %>
 <% end %>
+<div id="flash" <%= flash_class_attribute %>><%= flash_message %></div>
 <ul id="decks-list" class="list">
   <%= render "list", :decks => @decks %>
 </ul>

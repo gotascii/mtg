@@ -16,8 +16,10 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     if @deck.save
+      flash[:notify] = save_msg
       redirect_to decks_url
     else
+      load_flash_error
       load_decks
       render "index"
     end
@@ -32,10 +34,25 @@ class DecksController < ApplicationController
   end
 
   def update
-    @deck.update_attributes(params[:deck])
+    if @deck.update_attributes(params[:deck])
+      flash.now[:notify] = save_msg
+    else
+      load_flash_error
+    end
   end
 
   private
+  def save_msg
+    "#{@deck.name.upcase} was successfully saved."
+  end
+  
+  def load_flash_error
+    flash.now[:error] = ["#{@deck.name.upcase} could not be saved!"]
+    flash.now[:error] += @deck.errors.on_base.collect do |msg|
+      "#{msg} in the <a href=\"/cards\">card list</a>."
+    end
+  end
+
   def load_deck
     @deck = Deck.find(params[:id])
   end
