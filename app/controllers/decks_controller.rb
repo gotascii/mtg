@@ -1,8 +1,8 @@
 class DecksController < ApplicationController
   before_filter :load_deck, :only => [:show, :destroy, :edit, :update]
-  before_filter :load_decks, :only => [:index, :update]
 
   def index
+    load_decks
     @deck = Deck.new
   end
 
@@ -39,6 +39,7 @@ class DecksController < ApplicationController
     else
       load_flash_error
     end
+    load_decks
   end
 
   private

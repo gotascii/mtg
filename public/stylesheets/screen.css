@@ -151,6 +151,11 @@ td.loading {
   height: 12px;
 }
 
+li.loading {
+  background-position: 244px 13px;
+  height: 16px;
+}
+
 .pagination {
   margin-bottom: 10px;
 }
