@@ -12,9 +12,9 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(params[:card])
     if @card.save
-      flash.now[:notify] = "#{@card.name} was successfully created."
+      flash.now[:notify] = "#{@card.titleized_name} was successfully created."
     else
-      flash.now[:error] = "#{@card.name} was not saved!"
+      flash.now[:error] = "#{@card.titleized_name} was not saved!"
     end
     load_cards
   end
