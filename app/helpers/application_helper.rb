@@ -7,10 +7,8 @@ module ApplicationHelper
     end
   end
 
+
   def flash_class
-    # classes = flash.keys.collect do |k|
-    #   k.to_s if flash[k]
-    # end.compact
     classes = flash.reject{|k, v| v.nil? }.keys
     classes.join(' ')
   end
