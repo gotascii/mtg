@@ -72,4 +72,10 @@ class Deck < ActiveRecord::Base
   def populate_picks
     self.picks = @new_picks if valid?
   end
+
+  def library
+    picks.inject([]) do |library, p|
+      library += [p.card.name] * p.total
+    end
+  end
 end

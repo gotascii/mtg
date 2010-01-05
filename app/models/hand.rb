@@ -1,19 +1,14 @@
 class Hand
-  attr_accessor :cards, :turns
+  attr_accessor :library, :turns
 
   def initialize(deck)
     @turns = 0
-    @cards = []
-    deck.picks.each do |p|
-      p.total.times do
-        @cards << p.card.name
-      end
-    end
+    @library = deck.library
     shuffle
   end
 
   def peek
-    cards.first
+    library.first
   end
 
   def increment
@@ -23,16 +18,16 @@ class Hand
   def draw(count = 1, turn = true)
     increment if turn
     count -= 1
-    cards.slice!(0..count)
+    library.slice!(0..count)
   end
 
   def shuffle
-    @cards.shuffle!
+    library.shuffle!
   end
 
   def pluck(name)
-    idx = cards.index(name)
-    card = cards.delete_at(idx)
+    idx = library.index(name)
+    card = library.delete_at(idx)
     shuffle
     card
   end
