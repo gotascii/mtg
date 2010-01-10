@@ -1,10 +1,12 @@
-["Red",
-"Green",
-"White",
-"Blue",
-"Black",
-"None"].each do |name|
-  Color.create(:name => name)
+[["Red", "R"],
+["Green", "G"],
+["White", "W"],
+["Blue", "U"],
+["Black", "B"],
+["None", "N"]].each do |name, abbr|
+  c = Color.find_or_create_by_name(name)
+  c.abbr = abbr
+  c.save
 end
 
 [["M2010", "M10", "magic-2010-m10-core-set-common.gif"],

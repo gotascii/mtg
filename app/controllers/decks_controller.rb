@@ -50,7 +50,7 @@ class DecksController < ApplicationController
   def load_flash_error
     flash.now[:error] = ["#{@deck.name.upcase} could not be saved!"]
     flash.now[:error] += @deck.errors.on_base.collect do |msg|
-      "#{msg} in the <a href=\"/cards\">card list</a>."
+      "#{msg} on <a href=\"http://magiccards.info\">magiccards.info</a>."
     end
   end
 

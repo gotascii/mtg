@@ -53,12 +53,12 @@ class Deck < ActiveRecord::Base
   end
 
   def generate_new_picks
+    complete_list.gsub!(/\n+/, "\n").strip!
     @new_picks = complete_list.collect do |line|
       line =~ /(\d+)x(.*)/
       total = $1
       name = $2.strip.downcase
-      card = Card.find_by_name(name)
-      card = Card.new(:name => name) if card.nil?
+      card = Card.find_or_create_by_name(name)
       Pick.new(:card => card, :total => total, :deck => self)
     end
   end

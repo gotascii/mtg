@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  attr_accessor :color_ids
+  attr_accessor :color_ids, :magiccard
 
   has_many :shades, :dependent => :destroy
   has_many :colors, :through => :shades
@@ -8,6 +8,7 @@ class Card < ActiveRecord::Base
   belongs_to :expansion
   validates_presence_of :name, :total
   validates_uniqueness_of :name
+  validate :presence_of_magiccard, :on => :create
 
   named_scope :descend_by_expansion_abbr, {
     :joins => :expansion,
@@ -30,6 +31,9 @@ class Card < ActiveRecord::Base
   }
 
   named_scope :include_associations, :include => [:expansion, :card_type, :colors]
+
+  before_validation_on_create :populate_magiccard
+  after_create :populate_info
 
   def name=(val)
     self[:name] = val.downcase
@@ -57,5 +61,39 @@ class Card < ActiveRecord::Base
 
   def url
     "http://magiccards.info/query.php?cardname=#{URI.escape(name)}"
+  end
+
+  private
+  def populate_info
+    self.cmc = magiccard.cmc
+    self.image_url = magiccard.image_url
+    populate_colors if colors.empty?
+    populate_expansion if expansion.nil?
+    populate_type if card_type.nil?
+    save
+  end
+
+  def populate_colors
+    magiccard.colors.each do |abbr|
+      color = Color.find_by_abbr(abbr)
+      self.colors << color unless color.nil?
+    end
+  end
+  
+  def populate_expansion
+    exp = Expansion.find_by_name(magiccard.expansion)
+    self.expansion = exp unless exp.nil?
+  end
+
+  def populate_type
+    self.card_type = CardType.find_by_name(magiccard.type)
+  end
+
+  def populate_magiccard
+    @magiccard = Magiccards.new(name)
+  end
+
+  def presence_of_magiccard
+    errors.add(:magiccard, "could not be found") unless magiccard.found?
   end
 end

@@ -21,15 +21,20 @@ class Hand
     library.slice!(0..count)
   end
 
-  def shuffle
+  def shuffle(cards = [])
+    cards = cards.to_a
+    self.library += cards
     library.shuffle!
   end
 
-  def pluck(name)
-    idx = library.index(name)
-    card = library.delete_at(idx)
-    shuffle
-    card
+  def tutor(names)
+    names = names.to_a
+    names.collect do |name|
+      idx = library.index(name)
+      card = idx.nil? ? nil : library.delete_at(idx)
+      shuffle
+      card
+    end
   end
 
   def roll

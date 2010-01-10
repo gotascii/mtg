@@ -14,6 +14,13 @@ $.fn.stripe = function() {
 function stripe() {
   $('tr, ul.list li').stripe();
 }
+
 $(function () {
   stripe();
+  $(".card").tooltip({ 
+    bodyHandler: function() { 
+      return $("<img/>").attr("src", $(this).attr("thumb"));
+    },
+    showURL: false
+  });
 });
