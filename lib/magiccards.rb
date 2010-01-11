@@ -43,6 +43,10 @@ class Magiccards
     end
   end
 
+  def basic_land?
+    info =~ /(^Basic Land)/
+  end
+
   def info
     doc.search('p').collect {|e| e.content }[6].strip
   end
@@ -68,6 +72,8 @@ class Magiccards
     exp = doc.search('td')[3].content
     if exp == "Planechase"
       doc.search('a')[28].content.strip
+    elsif basic_land?
+      "Magic 2010"
     else
       exp
     end
