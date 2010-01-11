@@ -9,7 +9,7 @@
   c.save
 end
 
-[["M2010", "M10", "magic-2010-m10-core-set-common.gif"],
+[["Magic 2010", "M10", "magic-2010-m10-core-set-common.gif"],
 ["Zendikar", "ZEN", "Zendikar_Common.gif"],
 ["Conflux", "CON", "Conflux_Common.gif"],
 ["9th Core", "9ED", "Exp_sym_9th.png"],
