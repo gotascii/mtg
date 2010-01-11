@@ -23,7 +23,8 @@ end
 ["Planar Chaos", "PLC", "Exp_sym_planarchaos.png"],
 ["Lorwyn", "LRW", "Exp_sym_lorwyn.png"],
 ["Dissension", "DIS", "Exp_sym_dissension.png"],
-["Time Spiral", "TSP", "Exp_sym_timespiral.png"]].each do |name, abbr, icon|
+["Time Spiral", "TSP", "Exp_sym_timespiral.png"],
+["None", "NON", "none.png"]].each do |name, abbr, icon|
   e = Expansion.find_or_create_by_name(name)
   e.abbr = abbr
   e.icon = icon

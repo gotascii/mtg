@@ -82,7 +82,7 @@ class Card < ActiveRecord::Base
   
   def populate_expansion
     exp = Expansion.find_by_name(magiccard.expansion)
-    self.expansion = exp unless exp.nil?
+    self.expansion = exp.nil? ? Expansion.none : exp
   end
 
   def populate_type
