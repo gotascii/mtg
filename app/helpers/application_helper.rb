@@ -33,6 +33,7 @@ module ApplicationHelper
   def card_columns(card)
     html = content_tag :td, link_to(card.titleized_name, card.url, :target => "_mtg", :class => "card", :thumb => card.image_url)
     html += content_tag :td, color_image_tags(card), :class => "data"
+    raise card.inspect if card.expansion.nil?
     html += content_tag :td, image_tag(card.expansion.icon, :title => card.expansion.name), :class => "data"
     html += content_tag :td, card.card_type.try(:abbr), :class => "data"
   end

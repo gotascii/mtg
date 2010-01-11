@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
   belongs_to :expansion
   validates_presence_of :name, :total
   validates_uniqueness_of :name
-  validate :presence_of_magiccard, :on => :create
+  validate :presence_of_magiccard
 
   named_scope :descend_by_expansion_abbr, {
     :joins => :expansion,
@@ -94,6 +94,6 @@ class Card < ActiveRecord::Base
   end
 
   def presence_of_magiccard
-    errors.add(:magiccard, "could not be found") unless magiccard.found?
+    errors.add(:magiccard, "could not be found") if new_record? && !magiccard.found?
   end
 end

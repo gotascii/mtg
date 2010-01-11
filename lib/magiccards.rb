@@ -65,6 +65,11 @@ class Magiccards
   end
 
   def expansion
-    doc.search('td')[3].content
+    exp = doc.search('td')[3].content
+    if exp == "Planechase"
+      doc.search('a')[28].content.strip
+    else
+      exp
+    end
   end
 end
