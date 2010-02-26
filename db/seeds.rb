@@ -24,6 +24,7 @@ end
 ["Lorwyn", "LRW", "Exp_sym_lorwyn.png"],
 ["Dissension", "DIS", "Exp_sym_dissension.png"],
 ["Time Spiral", "TSP", "Exp_sym_timespiral.png"],
+["Worldwake", "WWK", "200px-Worldwake_expansion_symbol.svg"],
 ["None", "NON", "none.png"]].each do |name, abbr, icon|
   e = Expansion.find_or_create_by_name(name)
   e.abbr = abbr

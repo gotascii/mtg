@@ -19,12 +19,17 @@ class Magiccards
 
   def initialize(name)
     url = Magiccards.card_url(name)
-    @doc = Nokogiri::HTML(open(url))
+    html = begin
+      open(url)
+    rescue
+      ""
+    end
+    @doc = Nokogiri::HTML(html)
     found? ? true : false
   end
 
   def found?
-    doc.search('h1').first.content != "no cards found"
+    !doc.search('h1').first.blank? && (doc.search('h1').first.content != "no cards found")
   end
 
   def image_url

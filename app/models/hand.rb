@@ -21,14 +21,23 @@ class Hand
     library.slice!(0..count)
   end
 
-  def shuffle(cards = [])
+  def shuffle(count = 1, cards = [])
+    unless count.is_a?(Integer)
+      cards = count
+      count = 1
+    end
     cards = cards.to_a
-    self.library += cards
+    self.library += cards*count
     library.shuffle!
   end
 
-  def tutor(names)
+  def tutor(count, names = [])
+    unless count.is_a?(Integer)
+      names = count
+      count = 1
+    end
     names = names.to_a
+    names *= count
     names.collect do |name|
       idx = library.index(name)
       card = idx.nil? ? nil : library.delete_at(idx)

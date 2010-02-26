@@ -4,5 +4,5 @@ ActionController::Routing::Routes.draw do |map|
     decks.resource :shopping_list, :only => [:show]
     decks.resource :complete_list, :only => [:show]
   end
-  map.root :cards
+  map.root :decks
 end
