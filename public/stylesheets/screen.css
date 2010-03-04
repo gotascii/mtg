@@ -159,3 +159,7 @@ li.loading {
 .pagination {
   margin-bottom: 10px;
 }
+
+.deck {
+  float: left;
+}

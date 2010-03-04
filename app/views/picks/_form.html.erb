@@ -3,5 +3,6 @@
 <p>
   <%= f.select :card_id, option_groups_from_collection_for_select(colors, 'cards_by_name', 'name', 'id', 'titleized_name', pick.card_id) %>
   <%= f.text_field :total, :class => 'total' %>
+  <%= f.check_box :sideboard %>
   <%= f.submit 'Save' %>
 </p>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100110004616) do
+ActiveRecord::Schema.define(:version => 20100303222400) do
 
   create_table "card_types", :force => true do |t|
     t.string "name"
@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(:version => 20100110004616) do
   create_table "picks", :force => true do |t|
     t.integer "deck_id"
     t.integer "card_id"
-    t.integer "total",   :default => 4
+    t.integer "total",     :default => 4
+    t.boolean "sideboard", :default => false
   end
 
   create_table "shades", :force => true do |t|

@@ -7,7 +7,8 @@ class Pick < ActiveRecord::Base
     :joins => :card
   }
   named_scope :wanted, :conditions => ["need > 0"]
-
+  named_scope :main, {:conditions => {:sideboard => false}}
+  named_scope :sideboard, {:conditions => {:sideboard => true}}
   CardType.all.each do |card_type|
     named_scope card_type.scope_method_name, {
       :joins => :card,
