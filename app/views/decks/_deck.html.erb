@@ -1,0 +1,15 @@
+<div class="deck">
+  <h2>
+    <span id="deck-info-<%= deck.id %>"><%= deck.to_s %></span>
+    <%= link_to 'BUY', deck_shopping_list_url(deck.id, :format => "txt") %>
+    <%= clippy(deck.shopping_list) %>
+    <%= link_to 'LIST', deck_complete_list_url(deck.id, :format => "txt") %>
+    <%= clippy(deck.complete_list) %>
+  </h2>
+  <% form_for(pick) do |f| %>
+    <%= render "picks/form", :f => f, :pick => pick, :colors => colors, :search => search %>
+  <% end %>
+  <table id="picks-table-<%= deck.id %>" style="float:left; margin-right: 10px">
+    <%= render "picks/table", :picks => picks, :search => search, :deck => deck %>
+  </table>
+</div>

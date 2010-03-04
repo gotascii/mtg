@@ -1,10 +1,20 @@
 class Deck < ActiveRecord::Base
   has_many :picks,  :dependent => :destroy
 
+  belongs_to :main, :class_name => "Deck", :foreign_key => "main_id"
+  has_one :sideboard, :class_name => "Deck", :foreign_key => "main_id"
+
+  named_scope :main, :conditions => {:main_id => nil}
+
   before_validation :generate_new_picks
   validate :presence_of_new_pick_cards
   validates_presence_of :name
   after_save :populate_picks
+  after_save :populate_sideboard, :unless => :sideboard?
+
+  def sideboard?
+    !main.nil?
+  end
 
   def total
     picks.sum(:total)
@@ -53,7 +63,8 @@ class Deck < ActiveRecord::Base
   end
 
   def generate_new_picks
-    complete_list.gsub!(/\n+/, "\n").strip!
+    list = []
+    list = complete_list.gsub(/\n+/, "\n").strip unless complete_list.blank?
     @new_picks = complete_list.collect do |line|
       line =~ /(\d+)x(.*)/
       total = $1
@@ -77,5 +88,9 @@ class Deck < ActiveRecord::Base
     picks.inject([]) do |library, p|
       library += [p.card.name] * p.total
     end
+  end
+
+  def populate_sideboard
+    Deck.create(:name => "sideboard", :main => self)
   end
 end

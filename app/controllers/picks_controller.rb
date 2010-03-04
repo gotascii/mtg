@@ -33,6 +33,8 @@ class PicksController < ApplicationController
   end
 
   def redirect_to_deck_url
-    redirect_to deck_url(@pick.deck, :search => params[:search])
+    deck = @pick.deck
+    deck = deck.main if deck.sideboard?
+    redirect_to deck_url(deck, :search => params[:search])
   end
 end

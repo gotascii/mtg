@@ -8,12 +8,13 @@ class DecksController < ApplicationController
 
   def show
     load_colors_with_cards
-    @search = @deck.picks.main.with_need.search(params[:search])
+    @search = @deck.picks.with_need.search(params[:search])
     @picks = @search.all
-    @sideboard_search = @deck.picks.sideboard.with_need.search(params[:search])
-    @sideboard_picks = @sideboard_search.all
     @pick = Pick.new(:deck => @deck)
-    @sideboard_pick = Pick.new(:deck => @deck, :sideboard => true)
+
+    @sideboard_search = @deck.sideboard.picks.with_need.search(params[:search])
+    @sideboard_picks = @sideboard_search.all
+    @sideboard_pick = Pick.new(:deck => @deck.sideboard)
   end
 
   def create
@@ -62,6 +63,6 @@ class DecksController < ApplicationController
   end
 
   def load_decks
-    @decks = Deck.all
+    @decks = Deck.main.all
   end
 end
